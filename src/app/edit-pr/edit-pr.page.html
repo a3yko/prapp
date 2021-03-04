@@ -1,0 +1,44 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>    
+    <ion-buttons class="ion-float-left">
+      <ion-back-button [text]="getBackButtonText()" defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Edit Personal Record</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="editPR()" [formGroup]="prform">
+      <ion-item>
+        <ion-label>What kind of PR?</ion-label>
+          <ion-select placeholder="Select One" formControlName="name" name="prname" value="{{ (old_pr | async)?.name }}"> 
+            <ion-select-option value="Back Squat">Back Squat</ion-select-option>
+            <ion-select-option value="Front Squat">Front Squat</ion-select-option>
+            <ion-select-option value="Snatch">Snatch</ion-select-option>
+            <ion-select-option value="Clean">Clean</ion-select-option>
+          </ion-select>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label>Reps</ion-label>
+        <ion-select placeholder="Select One" formControlName="reps" name="repcnt" value="{{ (old_pr | async)?.reps }}">
+              <ion-select-option value="1">1</ion-select-option>
+              <ion-select-option value="2">2</ion-select-option>
+              <ion-select-option value="3">3</ion-select-option>
+              <ion-select-option value="4">4</ion-select-option>
+              <ion-select-option value="5">5</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Lift Weight:</ion-label>
+        <ion-input type="number" formControlName="weight" name="prweight" value="{{ (old_pr | async)?.weight }}"></ion-input>
+      </ion-item>
+      <ion-button type="submit" color="primary" [disabled]="prform.invalid">Edit PR</ion-button>
+      <ion-button (click)="cancel()" type="button" color="secondary">Cancel</ion-button>
+      
+  </form>
+</ion-content>
+
+
+

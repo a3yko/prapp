@@ -1,0 +1,21 @@
+
+<ion-item-sliding #slidingItem>
+
+  <ion-item *ngIf="pr" [routerLink]="'/pr/' + pr.id" [detail]="false">
+    <div slot="start"></div>
+    <ion-label class="ion-float-left">{{ pr.name }}</ion-label>
+    <ion-label class="ion-float-right">{{ pr.date.toDate() | date:'MM/dd/yyyy h:mm a' }}</ion-label>
+  </ion-item>
+
+  <ion-item-options side="end">
+    <ion-button (click)="edit()" color="primary" expand="full" class="siding">
+      <ion-icon name="pencil"></ion-icon>
+      <strong>Edit</strong>
+    </ion-button>
+    <ion-button (click)="delete()" color="danger" expand="full" class="siding">
+      <ion-icon name="trash"></ion-icon>
+      <strong>Delete</strong>
+    </ion-button>
+  </ion-item-options>
+
+</ion-item-sliding>

@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons class="ion-float-left">
+      <ion-back-button [text]="getBackButtonText()" defaultHref="/login"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center ion-margin">
+      Register
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>    
+
+    <!-- Register Form -->
+  <form [formGroup]="registerFormGroup" (submit)="register()">
+    <div fxLayout="column" class="form-container inputs">
+      <ion-input required placeholder="Name" formControlName="name" class="inputs"></ion-input>
+      <ion-input required placeholder="Email" formControlName="email"
+          type="email" class="inputs"></ion-input>
+      <ion-input required placeholder="Password" formControlName="password"
+          type="password" class="inputs"></ion-input>
+          <div *ngIf="checkLength()">
+            <ion-text color="danger">Password length must be 8 characters</ion-text>
+          </div>
+      <ion-button type="submit" [disabled]="registerFormGroup.invalid">Register</ion-button>
+    </div>
+  </form>
+
+</ion-content>

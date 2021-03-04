@@ -1,0 +1,23 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons class="ion-float-left">
+      <ion-back-button [text]="getBackButtonText()" defaultHref="/login"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center ion-margin">
+      Login
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Login Form -->
+  <form [formGroup]="loginFormGroup" (submit)="login()">
+    <div fxLayout="column" class="form-container inputs">
+            <ion-input required placeholder="Email" formControlName="email"
+                type="email" class="inputs"></ion-input>
+            <ion-input required placeholder="Password" formControlName="password"
+                type="password" class="inputs"></ion-input>
+        <ion-button type="submit" [disabled]="loginFormGroup.invalid">Login</ion-button>
+    </div>
+  </form>
+</ion-content>
